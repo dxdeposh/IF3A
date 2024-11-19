@@ -56,6 +56,6 @@ Route::get('/biodata/{nim}', function ($nim) {
 
 Route::get('/hello', [HelloController::class, 'index']);
 
-Route::get('berita/create', [BeritaController::class, 'create'])->name('berita.create');
-Route::post('berita', [BeritaController::class, 'store'])->name('berita.store');
-Route::get('berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
+Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');

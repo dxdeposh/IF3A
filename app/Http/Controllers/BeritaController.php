@@ -7,6 +7,11 @@ use App\Models\Berita;
 
 class BeritaController extends Controller
 {
+
+    public function index(){
+        $data = Berita::all();
+        return view('berita.index', ['data' => $data]);
+    }
     public function create(){
         return view('berita.create');
     }
