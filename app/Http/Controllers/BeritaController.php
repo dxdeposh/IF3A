@@ -22,7 +22,7 @@ class BeritaController extends Controller
            'isi_berita' => $request->isi_berita
         ]);
         if($berita){
-            return "Data Berhasil Disimpan <a href='".route('berita.create')."'>Kembali</a>";
+            return "Data Berhasil Disimpan <a href='".route('berita.index')."'>Kembali</a>";
         }else{
             return "Data Gagal Disimpan <a href='".route('berita.create')."'>Kembali</a>";
             }
@@ -44,6 +44,6 @@ class BeritaController extends Controller
         }else{
             return "Data Gagal Disimpan <a href='".route('berita.index')."'>Kembali</a>";
             }
-    }
+        }
     }
 }
