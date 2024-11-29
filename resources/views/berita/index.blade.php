@@ -23,7 +23,11 @@
         <tbody>
             @foreach ($data as $item)
             <tr>
-                <td></td>
+                <td>
+                    <a href="{{route('berita.edit', $item->id)}}" class="btn btn-danger">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                </td>
                 <td>{{$item->judul_berita}}</td>
                 <td>{{$item->isi_berita}}</td>
             </tr>

@@ -30,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
 
 Route::get('/siswa/{kelas}/{nim}', function ($kelas, $nim) {
     if ($kelas === 'IF3A' && $nim === '231420051') {
@@ -59,3 +58,9 @@ Route::get('/hello', [HelloController::class, 'index']);
 Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
 Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
+Route::put('/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
+
+
+
+require __DIR__.'/auth.php';
