@@ -40,8 +40,8 @@ Route::get('/siswa/{kelas}/{nim}', function ($kelas, $nim) {
     }
 });
 
-Route::get('/hello/{nama}', function($nama){
-    return "hello ".$nama;
+Route::get('/hello/{nama}', function ($nama) {
+    return "hello " . $nama;
 });
 
 Route::get('/biodata/{nim}', function ($nim) {
@@ -60,7 +60,7 @@ Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store')
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/{id}', [BeritaController::class, 'edit'])->name('berita.edit');
 Route::put('/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
+Route::get('/berita/{id}/show', [BeritaController::class, 'show'])->name('berita.show');
+Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
