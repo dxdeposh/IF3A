@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriBerita;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 
@@ -10,19 +11,23 @@ class BeritaController extends Controller
 
     public function index()
     {
-        $data = Berita::all();
-        return view('berita.index', ['data' => $data]);
+        $data = Berita::with('kategoriBerita')->get();
+        $kategoriBerita = KategoriBerita::all();
+
+        return view('berita.index', compact('data', 'kategoriBerita'));
     }
     public function create()
     {
-        return view('berita.create');
+        $kategoriBerita = KategoriBerita::all();
+        return view('berita.create', compact('kategoriBerita'));
     }
 
     public function store(Request $request)
     { {
             $berita = Berita::create([
                 'judul_berita' => $request->judul,
-                'isi_berita' => $request->isi_berita
+                'isi_berita' => $request->isi_berita,
+                'kategori_berita_id' => $request->kategori_berita_id
             ]);
             if ($berita) {
                 return redirect()->route('berita.index')->with('success', 'Berita Berhasil Disimpan.');
@@ -33,15 +38,17 @@ class BeritaController extends Controller
     }
     public function edit($id)
     {
-        $berita = Berita::find($id);
-        return view('berita.edit', ['data' => $berita]);
+        $data = Berita::findOrFail($id);
+        $kategoriBerita = KategoriBerita::all();
+        return view('berita.edit', compact('data', 'kategoriBerita'));
     }
 
     public function update($id, Request $request)
     { {
             $berita = Berita::where('id', $id)->update([
                 'judul_berita' => $request->judul,
-                'isi_berita' => $request->isi_berita
+                'isi_berita' => $request->isi_berita,
+                'kategori_berita_id' => $request->kategori_berita_id
             ]);
 
             if ($berita) {
@@ -52,7 +59,8 @@ class BeritaController extends Controller
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $berita = Berita::find($id);
         return view('berita.show', ['data' => $berita]);
     }

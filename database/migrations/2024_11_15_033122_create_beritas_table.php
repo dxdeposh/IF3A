@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul_berita');
             $table->text('isi_berita');
+            $table->foreignId('kategori_berita_id')->nullable()->constrained('kategoriBerita')->onDelete('cascade');
             $table->timestamps();
         });
     }

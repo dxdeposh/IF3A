@@ -5,6 +5,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\KategoriBeritaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +66,7 @@ Route::put('/berita/{id}', [BeritaController::class, 'update'])->name('berita.up
 Route::get('/berita/{id}/show', [BeritaController::class, 'show'])->name('berita.show');
 Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
+Route::resource('kategori-berita', KategoriBeritaController::class);
 
 Route::resource('kendaraan', KendaraanController::class);
 
