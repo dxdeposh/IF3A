@@ -3,6 +3,8 @@
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,5 +64,10 @@ Route::get('/berita/{id}', [BeritaController::class, 'edit'])->name('berita.edit
 Route::put('/berita/{id}', [BeritaController::class, 'update'])->name('berita.update');
 Route::get('/berita/{id}/show', [BeritaController::class, 'show'])->name('berita.show');
 Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+
+
+Route::resource('kendaraan', KendaraanController::class);
+
+Route::resource('buku', BukuController::class);
 
 require __DIR__ . '/auth.php';
